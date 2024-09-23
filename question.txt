@@ -1,0 +1,28 @@
+1. Assuming the system currently has three microservices: Customer API, Master Data API,
+   and Transaction Data API, there is a new feature that requires data from all three
+   microservices to be displayed in near real-time. The current technology stack includes  REST APIs and an RDBMS database.
+   How would you design a new API for this feature?
+    •   Create a new microservices service. This service use for call the Customer API, Master Data API, and Transaction Data API in parallel and aggregate their responses.
+        Handle latency by use websocket and radis for realtime data transfer and cache data.
+        Optimization database query for reduce responses time.
+
+2. Assuming the team has started planning a new project, the project manager asks you for a  performance test strategy plan for this release. How would you recommend proceeding to the project manager?
+    •   Prefer
+        Load Testing.
+        Stress Testing.
+        Endurance Testing.
+
+        And Made a Scenarios test case for testing
+
+Addition
+• Validation: Outline how you will validate data inputs in both APIs to ensure data  integrity.
+    -First step validate will use validation lib for validate data form request and use dto for validate data in second step.
+• Database Design: Describe the database schema and the approach you will use to  handle multilingual support for product information.
+    -Use 2 Table for handle multilingual support for product information.
+      1. product table for store core key ex. product_id
+      2. productInformation table for store information of product with multilingual and ref the product table with product_id
+• Testing Strategy: Explain your strategy for testing these APIs, including how you  will handle unit tests, integration tests, and any end-to-end testing considerations.
+    -Unit Tests: Test each controller, service, and utility in isolation, mocking dependencies like database and external services.
+    -Integration Tests: Test the interaction between services, controllers, and the database using an actual test database.
+    -E2E Tests: Simulate real-world usage of the API, covering full scenarios like multilingual search, CRUD operations, and error handling.
+
